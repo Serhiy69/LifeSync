@@ -15,3 +15,13 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+
+describe('Головна сторінка LifeSync', () => {
+  it('успішно відкриває застосунок', () => {
+    
+    cy.visit('http://localhost:5173')
+
+    
+    cy.get('body').should('be.visible')
+  })
+})
