@@ -1,3 +1,4 @@
+/* global Cypress */
 // ***********************************************************
 // This example support/component.js is processed and
 // loaded automatically before your test files.
