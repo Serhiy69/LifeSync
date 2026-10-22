@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Navigation from './components/Navigation/Navigation';
 import LoginPage from './pages/LoginPage';
 import MainPage from './pages/MainPage';
@@ -7,23 +7,25 @@ import CalendarPage from './pages/CalendarPage';
 import './App.css';
 
 export default function App() {
-
-  const [activeTab, setActiveTab] = useState('login');
+  const location = useLocation();
 
   return (
     <div className="app-layout">
       <main className="content">
-        {activeTab === 'login' && (
-          <LoginPage onLogin={() => setActiveTab('main')} />
-        )}
-        {activeTab === 'main' && <MainPage />}
-        {activeTab === 'calendar' && <CalendarPage />}
-        {activeTab === 'tasks' && <TasksPage />}
+        <Routes>
+          <Route path="/" element={<Navigate to="/login" replace />} />
+
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/main" element={<MainPage />} />
+          <Route path="/tasks" element={<TasksPage />} />
+          <Route path="/calendar" element={<CalendarPage />} />
+
+          <Route path="*" element={<Navigate to="/login" replace />} />
+        </Routes>
       </main>
-      
-      {activeTab !== 'login' && (
-        <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
-      )}
+
+
+      {location.pathname !== '/login' && <Navigation />}
     </div>
   );
 }

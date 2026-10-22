@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './CalendarPage.module.css';
 
 export default function CalendarPage() {

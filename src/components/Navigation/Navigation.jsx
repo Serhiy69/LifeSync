@@ -1,32 +1,38 @@
-import React from 'react';
+import { NavLink } from 'react-router-dom';
 import styles from './Navigation.module.css';
 
-export default function Navigation({ activeTab, setActiveTab }) {
+export default function Navigation() {
   return (
     <nav className={styles.nav}>
-      <button 
-        className={`${styles.navItem} ${activeTab === 'main' ? styles.active : ''}`}
-        onClick={() => setActiveTab('main')}
+      <NavLink
+        to="/main"
+        className={({ isActive }) =>
+          `${styles.navItem} ${isActive ? styles.active : ''}`
+        }
       >
         <span className={styles.icon}>⏱</span>
         <span>Головна</span>
-      </button>
+      </NavLink>
 
-      <button 
-        className={`${styles.navItem} ${activeTab === 'calendar' ? styles.active : ''}`}
-        onClick={() => setActiveTab('calendar')}
+      <NavLink
+        to="/calendar"
+        className={({ isActive }) =>
+          `${styles.navItem} ${isActive ? styles.active : ''}`
+        }
       >
         <span className={styles.icon}>📅</span>
         <span>Календар</span>
-      </button>
+      </NavLink>
 
-      <button 
-        className={`${styles.navItem} ${activeTab === 'tasks' ? styles.active : ''}`}
-        onClick={() => setActiveTab('tasks')}
+      <NavLink
+        to="/tasks"
+        className={({ isActive }) =>
+          `${styles.navItem} ${isActive ? styles.active : ''}`
+        }
       >
         <span className={styles.icon}>📋</span>
         <span>Завдання</span>
-      </button>
+      </NavLink>
     </nav>
   );
 }
