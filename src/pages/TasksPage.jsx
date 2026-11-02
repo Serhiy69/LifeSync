@@ -19,6 +19,7 @@ const formatDisplayDate = (dateStr) => {
   });
 };
 
+
 export default function TasksPage() {
   const { tasks, isLoading, addTask, toggleTask } = useTaskContext();
   const todayStr = getTodayDateString();
